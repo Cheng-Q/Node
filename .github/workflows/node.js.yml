@@ -29,7 +29,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ALIYUN }}
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "/"
+          SOURCE: "./"
           REMOTE_HOST: "47.100.116.155"
           REMOTE_USER: "root"
           TARGET: "/www/server/"
