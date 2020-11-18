@@ -18,7 +18,7 @@ app.all('*', (req, res, next) => {
 })
 app.all('/pa',(req,res) => {
   console.log('11',req.body)
-  res.write('正在抓')
+  res.write('正在抓/n')
   let url = 'https://www.csdn.net/?spm=1000.2115.3001.4476'
   let nameClass = '.nav_center_wrap li'
   console.log('1111111')
@@ -27,7 +27,7 @@ app.all('/pa',(req,res) => {
 
 })
 app.get('/api', (req, res) => {
-  console.log(path.join(__dirname,'../../www/server/tarbar.json'))
+  console.log(path.join(__dirname,'/tarbar.json'))
   let file = path.join(__dirname,'tarbar.json')
   fs.readFile(file, 'utf-8', (err,data) => {
     if(err) {
@@ -77,7 +77,7 @@ const fn = function(url,item,callback){
     fs.writeFile('../www/server/tarbar.json',data, 'utf-8',(error) => {
       //监听错误，如正常输出，则打印null
       if(error==null){
-       callback.write('写入成功')
+       callback.write('写入成功/n')
        callback.end();
        console.log('写入成功')
       }
