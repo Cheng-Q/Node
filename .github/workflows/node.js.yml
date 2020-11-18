@@ -35,4 +35,4 @@ jobs:
         SOURCE: "dist/" 
         REMOTE_HOST: "47.100.116.155"
         REMOTE_USER: "root"
-        TARGET: "/home/www/"
+        TARGET: "/www/server/"
