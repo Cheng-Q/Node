@@ -8,7 +8,7 @@ md5=package_md5
 # 创建新的md5信息
 while true
 do
-
+npm i
 package_md5_new=$(md5sum -b $package | awk '{print $1}'|sed 's/ //g')
 
 # 创建md5的函数
