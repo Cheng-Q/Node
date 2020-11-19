@@ -1,9 +1,10 @@
 #!/bin/bash
 #chkconfig:2345 80 90
+#description:nodeRun service
 #检测文件内容是否更改
 # 检测的文件
-package=/www/server/server.js
-# package=./views/index.html
+# package=/www/server/server.js
+package=./views/index.html
 # 记录 md5值的文件
 md5=package_md5
 # 创建新的md5信息
@@ -24,7 +25,6 @@ if [ ! -f $md5 ] ; then
         creatmd5
         # exit
 fi
-
 # 读取旧的md5信息
 package_md5_old=$(cat $md5|sed 's/ //g')
 
