@@ -3,17 +3,18 @@
 #检测文件内容是否更改
 # 检测的文件
 package=/www/server/server.js
+# package=./views/index.html
 # 记录 md5值的文件
 md5=package_md5
 # 创建新的md5信息
 while true
 do
-npm i
 package_md5_new=$(md5sum -b $package | awk '{print $1}'|sed 's/ //g')
 
 # 创建md5的函数
 function creatmd5()
 {
+
         echo $package_md5_new > $md5
 }
 
@@ -36,9 +37,11 @@ if [ "$package_md5_new" == "$package_md5_old" ];then
         # docker restart saas
 else
         echo "md5 is  changed"
+        cd /www/server
         echo "停止node服务"
         kill -9 $(ps aux | grep server | awk '{print $2}')
         echo "开始下载依赖"
+        # mkdir aa
         npm i
         echo "依赖下载完成重新开始服务"
         node $package
