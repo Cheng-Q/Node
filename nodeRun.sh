@@ -38,8 +38,9 @@ else
         echo "md5 is  changed"
         echo "停止node服务"
         kill -9 $(ps aux | grep server | awk '{print $2}')
+        echo "开始下载依赖"
         npm i
-        echo "重新开始服务"
+        echo "依赖下载完成重新开始服务"
         node $package
         creatmd5
         
