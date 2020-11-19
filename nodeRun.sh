@@ -6,8 +6,8 @@ package=/www/server/server.js
 # 记录 md5值的文件
 md5=package_md5
 # 创建新的md5信息
-# while true
-# do
+while true
+do
 
 package_md5_new=$(md5sum -b $package | awk '{print $1}'|sed 's/ //g')
 
@@ -21,7 +21,7 @@ function creatmd5()
 if [ ! -f $md5 ] ; then
         echo "md5file is not exsit,create md5file......."
         creatmd5
-        exit
+        # exit
 fi
 
 # 读取旧的md5信息
@@ -45,7 +45,7 @@ else
         creatmd5
         
 fi
-#sleep 10;
+sleep 10;
 
-#done
+done
 

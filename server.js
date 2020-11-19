@@ -102,7 +102,7 @@ const fn = function(url,item,callback){
           message: '写入成功'
         })
         callback.end();
-        console.log('写入成功')
+        console.log('写入成功了')
       }
     })
   }
