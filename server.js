@@ -39,7 +39,7 @@ app.all('/pa',(req,res) => {
   })
   let url = 'https://www.csdn.net/?spm=1000.2115.3001.4476'
   let nameClass = '.nav_center_wrap li'
-  console.log('1111111')
+  console.log('1111111222')
   fn(url,nameClass,res)
   
 
