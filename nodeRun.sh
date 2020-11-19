@@ -1,4 +1,5 @@
 #!/bin/bash
+#chkconfig:2345 80 90
 #检测文件内容是否更改
 # 检测的文件
 package=/www/server/server.js

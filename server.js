@@ -1,11 +1,19 @@
 const express = require('express')
 const fs = require('fs')
 const bodyParser = require('body-parser')
+const swig = require('swig')
+
 // 爬取列表数据
 const https = require('https')
 const cheerio = require('cheerio')
 const path = require('path')
 const app = express()
+// 设置要渲染的页面
+app.set('views','./views')
+// 设置html模版渲染引擎
+app.engine('html', swig.renderFile)
+// 设置渲染引擎为html
+app.set('view engine', 'html')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.all('*', (req, res, next) => {
@@ -16,9 +24,19 @@ app.all('*', (req, res, next) => {
   res.header('Content-Type', 'application/json;charset=utf-8');
   next();
 })
+let file = path.join(__dirname,'tarbar.json')
+app.get('/', (req,res) => {
+  res.setHeader('Content-type','text/html;charset=utf-8')
+  fs.readFile(file,'utf-8',(err,data) => {
+    res.render('index',{data: JSON.parse(data),title: '111'})
+  })
+})
 app.all('/pa',(req,res) => {
+  res.setHeader('Content-type','text/html;charset=utf-8')
   console.log('11',req.body)
-  res.write('正在抓/n')
+  res.render('index', {
+    text: '开始抓了'
+  })
   let url = 'https://www.csdn.net/?spm=1000.2115.3001.4476'
   let nameClass = '.nav_center_wrap li'
   console.log('1111111')
@@ -27,13 +45,16 @@ app.all('/pa',(req,res) => {
 
 })
 app.get('/api', (req, res) => {
-  console.log(path.join(__dirname,'/tarbar.json'))
-  let file = path.join(__dirname,'tarbar.json')
   fs.readFile(file, 'utf-8', (err,data) => {
+    res.setHeader('Content-type','text/html;charset=utf-8')
     if(err) {
-      res.send('读取文件失败')
+      res.render('index', {
+        text: '读取文件失败'
+      })
     } else {
-      res.send(data)
+      res.render('index', {
+        data: JSON.parse(data)
+      })
     }
   })
 })
@@ -77,9 +98,11 @@ const fn = function(url,item,callback){
     fs.writeFile('../www/server/tarbar.json',data, 'utf-8',(error) => {
       //监听错误，如正常输出，则打印null
       if(error==null){
-       callback.write('写入成功/n')
-       callback.end();
-       console.log('写入成功')
+        callback.render('index', {
+          message: '写入成功'
+        })
+        callback.end();
+        console.log('写入成功')
       }
     })
   }
