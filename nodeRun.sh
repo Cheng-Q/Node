@@ -3,8 +3,8 @@
 #description:nodeRun service
 #检测文件内容是否更改
 # 检测的文件
-# package=/www/server/server.js
-package=./views/index.html
+package=/www/server/server.js
+# package=./views/index.html
 # 记录 md5值的文件
 md5=package_md5
 # 创建新的md5信息
