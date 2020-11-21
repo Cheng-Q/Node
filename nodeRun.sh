@@ -35,6 +35,7 @@ echo $package_md5_old
 if [ "$package_md5_new" == "$package_md5_old" ];then
         echo 'md5 is not changed'
         echo '没有更改么，那我就运行了。。。'
+        cd /www/server
         node $package
         # docker restart saas
 else

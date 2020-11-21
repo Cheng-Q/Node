@@ -7,3 +7,4 @@ dir=/www/server/
 cd $dir
 # 执行shell脚本--node检测更新脚本
 sh nodeRun.sh
+done
