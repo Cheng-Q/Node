@@ -34,6 +34,8 @@ echo $package_md5_old
 # 对象对比判断
 if [ "$package_md5_new" == "$package_md5_old" ];then
         echo 'md5 is not changed'
+        echo '没有更改么，那我就运行了。。。'
+        node $package
         # docker restart saas
 else
         echo "md5 is  changed"
