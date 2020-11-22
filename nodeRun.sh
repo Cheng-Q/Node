@@ -16,7 +16,7 @@ package_md5_new=$(md5sum -b $package | awk '{print $1}'|sed 's/ //g')
 function creatmd5()
 {
 
-        echo $package_md5_new > $md5
+    echo $package_md5_new > $md5
 }
 
 # 判断文件是否存在
