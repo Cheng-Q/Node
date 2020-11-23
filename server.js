@@ -52,9 +52,7 @@ app.get('/api', (req, res) => {
         text: '读取文件失败'
       })
     } else {
-      res.render('index', {
-        data: JSON.parse(data)
-      })
+      res.end(data)
     }
   })
 })
