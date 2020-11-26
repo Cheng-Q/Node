@@ -6,10 +6,10 @@ const swig = require('swig')
 const https = require('https')
 const cheerio = require('cheerio')
 const path = require('path')
-const app = express() 
+const app = express()
 // 设置要渲染的页面 
 app.set('views','./views')
-// 设置html模版渲染引擎
+// 设置html模版渲染引擎 
 app.engine('html', swig.renderFile)
 // 设置渲染引擎为html
 app.set('view engine', 'html')
