@@ -2,13 +2,12 @@ const express = require('express')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const swig = require('swig')
-
 // 爬取列表数据
 const https = require('https')
 const cheerio = require('cheerio')
 const path = require('path')
-const app = express()
-// 设置要渲染的页面
+const app = express() 
+// 设置要渲染的页面 
 app.set('views','./views')
 // 设置html模版渲染引擎
 app.engine('html', swig.renderFile)
@@ -30,7 +29,7 @@ app.get('/', (req,res) => {
   fs.readFile(file,'utf-8',(err,data) => {
     res.render('index',{data: JSON.parse(data),title: '111'})
   })
-})
+})     
 app.all('/pa',(req,res) => {
   res.setHeader('Content-type','text/html;charset=utf-8')
   console.log('11',req.body)
@@ -40,9 +39,7 @@ app.all('/pa',(req,res) => {
   let url = 'https://www.csdn.net/?spm=1000.2115.3001.4476'
   let nameClass = '.nav_center_wrap li'
   console.log('1111111222')
-  fn(url,nameClass,res)
-  
-
+  fn(url,nameClass,res) 
 })
 app.get('/api', (req, res) => {
   fs.readFile(file, 'utf-8', (err,data) => {
@@ -69,7 +66,6 @@ const fn = function(url,item,callback){
   }).on('error', rq => {
     console.log(rq)
   })
-
   function filterHtml(html,nameClass,callback) {
     let $ = cheerio.load(html)
     let options = $(nameClass)
@@ -87,12 +83,12 @@ const fn = function(url,item,callback){
         target,
         reportClick,
         reportQuery
-      })
-    })
+      }) 
+    })  
     data = JSON.stringify(data)
     fs.writeFile('../www/server/tarbar.json',data, 'utf-8',(error) => {
-      //监听错误，如正常输出，则打印null
-      if(error==null){
+      //监听错误，如正常输出，则打印null 
+      if(error==null){ 
         callback.render('index', {
           message: '写入成功'
         })
@@ -101,11 +97,9 @@ const fn = function(url,item,callback){
       }
     })
   }
-  
-}
-
+} 
 let port = 8088 // 端口
 let host = '127.0.0.1'
 app.listen(port, host, (res) => {
    console.log(`服务器运行在http://${host}:${port}`);
-})
+}) 
