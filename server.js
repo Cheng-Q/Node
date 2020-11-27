@@ -86,7 +86,7 @@ const fn = function(url,item,callback){
       }) 
     })  
     data = JSON.stringify(data)
-    fs.writeFile('../www/server/tarbar.json',data, 'utf-8',(error) => {
+    fs.writeFile('tarbar.json',data, 'utf-8',(error) => {
       //监听错误，如正常输出，则打印null 
       if(error==null){ 
         callback.render('index', {
