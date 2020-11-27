@@ -92,7 +92,7 @@ const fn = function(url,item,callback){
         callback.render('index', {
           message: '写入成功'
         })
-        callback.end();
+        callback.end('写入成功');
         console.log('写入成功了1')
       }
     })
